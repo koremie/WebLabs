@@ -11,7 +11,31 @@
     justify-content: space-evenly;
     align-items: center;
 
-    transition: .3s;
+    animation: rainbow 8S linear 0s infinite alternate;
+}
+
+@keyframes rainbow {
+    0%{
+        background-color: rgba(255, 89, 89, 0.7);
+    }
+    16%{
+        background-color: rgba(255, 172, 89, 0.7);
+    }
+    33%{
+        background-color: rgba(255, 241, 89, 0.7);
+    }
+    50%{
+        background-color: rgba(103, 255, 89, 0.7);
+    }
+    67%{
+        background-color: rgba(89, 255, 255, 0.7);
+    }
+    84%{
+        background-color: rgba(89, 95, 255, 0.7);
+    }
+    100%{
+        background-color: rgba(208, 89, 255, 0.7);
+    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -30,10 +54,6 @@
 .request_demo_button::after {
     content: url('../img/btn/arrow.svg');
     margin-top: 6px;
-}
-
-.request_demo_button:hover {
-    background-color: rgb(244, 186, 238);
 }
 
 /* "Learn more" button */
