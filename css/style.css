@@ -1,0 +1,366 @@
+@import "./reset.min.css";
+@import "./normalize.min.css";
+
+html{
+    font-size: 18px;
+    font-family: 'Montserrat';
+}
+
+.wrapper{
+    margin: 13vh 0 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    z-index: 5;
+    background-color: rgb(216, 216, 216);
+    border-bottom: 2px solid rgb(175, 175, 175);
+}
+
+.header__container{
+    max-width: 70%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__nav{
+    flex-basis: 50%;
+    max-height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo{
+    font-size: 25px;
+    color: rgb(50, 50, 50);
+    margin-right: 20px;
+}
+
+.header__menu{
+    max-height: 100%;
+    display: flex;
+}
+
+.menu__item{
+    height: 8vh;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.menu__link{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(21, 21, 21);
+}
+
+.active_menu__item{
+    background-color: rgb(167, 167, 167);
+}
+
+.search_form{
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_input__container{
+    flex-basis: 70%;
+    display: flex;
+    align-items: center;
+}
+
+#search_form__input{
+    display: block;
+    margin-left: 80px;
+    width: 100%;
+    height: 50%;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+
+.search_buttons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+.header__button{
+    height: 50%;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    font-weight: 500;
+}
+
+#search_button{
+    width: 50%;
+    margin-left: 10px;
+    border: 2px solid rgb(79, 135, 255);
+    color: rgb(79, 135, 255);
+}
+
+#cancel_button{
+    width: 40%;
+    border: 2px solid #fff;
+    border: 2px solid rgb(255, 79, 79);
+    color: rgb(255, 79, 79);
+}
+
+.main{
+    flex: 1 1 auto;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.manage_animals{
+    flex: 0 1 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 3px solid rgba(112, 112, 112, 0.656);
+}
+
+.manage_animals__container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.manage__title{
+    text-align: center;
+    width: 100%;
+    font-size: 32px;
+    font-weight: 450;
+    margin-bottom: 50px;
+}
+
+.sort__container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid rgba(112, 112, 112, 0.656);
+}
+
+.option__title{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(47, 47, 47);
+}
+
+#sort__check{
+    width: 30px;
+    height: 30px;
+}
+
+.count__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.count__title{
+    margin-bottom: 20px;
+    padding: 0 8%;
+    text-align: center;
+}
+
+#count__button{
+    margin-bottom: 25px;
+    padding: 10px 50px;
+    border-radius: 5px;
+    background-color: rgba(32, 158, 255, 0.915);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.result{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 19px;
+}
+
+.total__title{
+    margin-right: 10px;
+    flex: 0 0 60%;
+}
+
+#total{
+    font-weight: 600;
+}
+
+.animals_container{
+    flex: 0 1 70%;
+    /* background-color: rgb(125, 125, 125); */
+}
+
+#animals_list{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 4% 0 0 3.3%;
+}
+
+.animal_item{
+    background-color: rgba(216, 216, 216, 0.795);
+    border-radius: 5px;
+    border-right: 3px solid rgb(96, 96, 96);
+    border-bottom: 3px solid rgb(96, 96, 96);
+    flex: 0 1 30%;
+    margin: 0 3% 20px 0;
+    padding: 5% 3% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+.animal_item__item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.animal_item h4{
+    align-self: center;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.animal__characteristic{
+    font-size: 19px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.animal__text{
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.edit_button__wrapper{
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+}
+
+.edit_button{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    border: 2px solid rgb(146, 146, 146);
+}
+
+
+
+
+#create__page{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #fff;
+    overflow: auto;
+    padding: 8vh 0 20vh;
+}
+
+.create_page__container{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8vh;
+}
+
+.create__title{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.create_animal__form{
+    width: 40%;
+}
+
+.input__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+.form_lable{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.form_input{
+    width: 100%;
+    height: 35px;
+    border-radius: 2px;
+    border: 1px solid rgb(120, 120, 120);
+    padding: 0 10px 0;
+    font-size: 19px;
+    margin-bottom: 25px;
+}
+
+#days-not-fed_input{
+    margin-bottom: 40px;
+}
+
+.input_page_button{
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    background-color: rgb(0, 132, 255);
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+#submit_button{
+
+}
+
+#edit_submit_button{
+    
+}
+
+
+body.lock{
+    overflow: hidden;
+}
+
+.hidden{
+    display: none;
+}

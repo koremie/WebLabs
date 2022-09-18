@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <nav class="header__nav">
+                    <div class="logo">
+                        My Terrarium
+                    </div>
+                    <ul id="menu" class="header__menu menu">
+                        <li class="menu__item">
+                            <button id="my_animals" href="" class="menu__link active_menu__item">My Animals</button>
+                        </li>
+                        <li class="menu__item">
+                            <button id="create_animal" href="" class="menu__link">Create Animal</button>
+                        </li>
+                    </ul>
+                </nav>
+                <form action="#" class="search_form">
+                    <div class="search_input__container">
+                        <input id="search_form__input" type="text" placeholder="Type something...">
+                    </div>
+                    <div class="search_buttons">
+                        <button id="search_button" class="header__button">
+                            Search
+                        </button>
+                        <button id="cancel_button" class="header__button">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </header>
+        <main class="main">
+            <div class="manage_animals">
+                <div class="manage_animals__container">
+                    <h2 class="manage__title">Manage animals</h2>
+                    <div class="sort__container">
+                        <h3 class="sort__title option__title">Sort by name:</h3>
+                        <input type="checkbox" id="sort__check">
+                    </div>
+                    <div class="count__container">
+                        <h3 class="count__title option__title">Count total days animals weren't fed:</h3>
+                        <button id="count__button">Count</button>
+                        <div class="result">
+                            <p class="total__title">Total days of starwing:</p>
+                            <p id="total"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="animals_container">
+                <ul id="animals_list">
+                    <!-- <li class="animal_item">
+                        <h4></h4>
+                        <div class="animal_item__item">
+                            <h5 class="animal__characteristic">Size:</h5>
+                            <p class="animal__text"></p>
+                        </div>
+                        <div class="animal_item__item">
+                            <h5 class="animal__characteristic">Lifespan:</h5>
+                            <p class="animal__text"></p>
+                        </div>
+                        <div class="animal_item__item">
+                            <h5 class="animal__characteristic">Danger level:</h5>
+                            <p class="animal__text"></p>
+                        </div>
+                        <div class="animal_item__item">
+                            <h5 class="animal__characteristic">Diet:</h5>
+                            <p class="animal__text"></p>
+                        </div>
+                        <div class="animal_item__item">
+                            <h5 class="animal__characteristic">Days not fed:</h5>
+                            <p class="animal__text"></p>
+                        </div>
+                        <div class="edit_button__wrapper">
+                            <button class="edit_button">Edit</button>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </main>
+        <main id="create__page" class="hidden">
+            <div class="create_page__container">
+                <h2 class="create__title">Create animal</h2>
+                <h2 class="create__title hidden">Edit animal</h2>
+                <form action="#" class="create_animal__form">
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Name</label>
+                        <input placeholder="" type="text" id="name_input" class="form_input">
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Species</label>
+                        <input placeholder="" type="text" id="species_input" class="form_input">
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Size</label>
+                        <input placeholder="" type="text" id="size_input" class="form_input">
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Lifespan</label>
+                        <input placeholder="" type="text" id="lifespan_input" class="form_input">
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Danger level</label>
+                        <select id="danger-level_input" class="form_input">
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Considerable">Considerable</option>
+                            <option value="High">High</option>
+                            <option value="Extreme">Extreme</option>
+                        </select>
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Diet</label>
+                        <input placeholder="" type="text" id="diet_input" class="form_input">
+                    </div>
+                    <div class="input__wrapper">
+                        <label for="" class="form_lable">Days not fed</label>
+                        <input placeholder="" type="number" id="days-not-fed_input" class="form_input">
+                    </div>
+                    <button id="submit_button" class="input_page_button">Submit</button>
+                    <button id="edit_submit_button" class="input_page_button hidden">Edit</button>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
