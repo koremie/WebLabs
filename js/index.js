@@ -1,29 +1,25 @@
+// ------------ Toggle pages -----------
+
 const body = document.body;
-const menu = document.getElementById('menu');
 const menuItems = document.querySelectorAll('.menu__link');
 const myAnimals = document.getElementById('my_animals');
 const createAnimal = document.getElementById('create_animal');
 const createPage = document.getElementById('create__page');
 const searchForm = document.querySelector('.search_form');
-
 const animalsBoard = document.getElementById('animals_list');
-const nameInput = document.getElementById('name_input');
-const spesiesInput = document.getElementById('species_input');
-const sizeInput = document.getElementById('size_input');
-const lifespanInput = document.getElementById('lifespan_input');
-const dangerLevelInput = document.getElementById('danger-level_input');
-const dietInput = document.getElementById('diet_input');
-const daysNotFedInput = document.getElementById('days-not-fed_input');
+
+const createTitle = document.querySelector('.create__title');
 const submitButton = document.getElementById('submit_button');
 const editSubmitButton = document.getElementById('edit_submit_button');
-const createTitle = document.querySelector('.create__title');
-
 
 const openMainPage = () => {
     switchMenuItem(myAnimals);
     createPage.classList.add('hidden');
     searchForm.classList.remove('hidden');
     body.classList.remove('lock');
+    createAnimal.innerHTML = 'Create Animal';
+    alertWindow.classList.add('hidden');
+    getAlertClosed();
 };
 
 const openCreatePage = () => {
@@ -34,8 +30,9 @@ const openCreatePage = () => {
     createPage.scrollTo(top);
     submitButton.classList.remove('hidden');
     editSubmitButton.classList.add('hidden');
+    alertWindow.classList.remove('hidden');
     clearInputValues();
-    createTitle.innerHTML = 'Create animal'
+    createTitle.innerHTML = 'Create animal';
 };
 
 const openEditPage = () => {
@@ -46,7 +43,9 @@ const openEditPage = () => {
     createPage.scrollTo(top);
     submitButton.classList.add('hidden');
     editSubmitButton.classList.remove('hidden');
-    createTitle.innerHTML = 'Edit animal'
+    alertWindow.classList.remove('hidden');
+    createTitle.innerHTML = 'Edit animal';
+    createAnimal.innerHTML = 'Edit animal';
 };
 
 const switchMenuItem = (menuItem) => {
@@ -57,8 +56,8 @@ const switchMenuItem = (menuItem) => {
 };
 
 createPage.addEventListener("keydown", (event) => {
-    if(event.target.closest('.create_animal__form') && 
-                                event.code === 'Enter'){
+    if (event.target.closest('.create_animal__form') &&
+        event.code === 'Enter') {
         console.log(event.code);
         event.preventDefault();
     }
@@ -72,15 +71,29 @@ createAnimal.addEventListener("click", (event) => {
     openCreatePage();
 });
 
+// ------------ Create animal -------------
+
+const nameInput = document.getElementById('name_input');
+const spesiesInput = document.getElementById('species_input');
+const sizeInput = document.getElementById('size_input');
+const lifespanInput = document.getElementById('lifespan_input');
+const dangerLevelInput = document.getElementById('danger-level_input');
+const dietInput = document.getElementById('diet_input');
+const daysNotFedInput = document.getElementById('days-not-fed_input');
+
 submitButton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    const {name, spesies, size, lifespan, 
-            dangerLevel, diet, daysNotFed,} = getInputValues();
-    clearInputValues();
-    addAnimalToList({name, spesies, size, lifespan, dangerLevel, diet, daysNotFed,});
-
-    openMainPage();
+    if (validateInputs()){
+        const { name, spesies, size, lifespan,
+            dangerLevel, diet, daysNotFed, } = getInputValues();
+        clearInputValues();
+        addAnimalToList({ name, spesies, size, lifespan, dangerLevel, diet, daysNotFed, });
+    
+        openMainPage();
+    } else {
+        getAlert();
+    }
 });
 
 const getInputValues = () => {
@@ -108,10 +121,10 @@ const clearInputValues = () => {
 let animalsList = [];
 let id = 0;
 
-const addAnimalToList = ({name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => {
+const addAnimalToList = ({ name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => {
     const newAnimal = {
         id: `edit_button_id_${id}`,
-        name: name, 
+        name: name,
         spesies: spesies,
         size: size,
         lifespan: lifespan,
@@ -119,12 +132,12 @@ const addAnimalToList = ({name, spesies, size, lifespan, dangerLevel, diet, days
         diet: diet,
         daysNotFed: daysNotFed
     }
-    id +=1
+    id += 1
     animalsList.push(newAnimal);
     addAnimalToBoard(newAnimal);
 }
 
-const itemTemplate = ({id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => `
+const itemTemplate = ({ id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => `
 <li class="animal_item">
     <h4>${name}</h4>
     <div class="animal_item__item">
@@ -159,6 +172,20 @@ const itemTemplate = ({id, name, spesies, size, lifespan, dangerLevel, diet, day
 </li>
 `;
 
+
+// ---------- Edit animal -----------
+
+let currentId;
+
+animalsBoard.addEventListener("click", (event) => {
+    if (event.target.closest('.edit_button')) {
+        openEditPage();
+
+        currentId = event.target.getAttribute('id');
+        fillInValuesToEdit(currentId);
+    }
+});
+
 const fillInValuesToEdit = (id) => {
     const itemToEdit = animalsList.find((item) => {
         return item.id === id;
@@ -172,44 +199,38 @@ const fillInValuesToEdit = (id) => {
     daysNotFedInput.value = itemToEdit.daysNotFed;
 };
 
-let currentId;
-
-animalsBoard.addEventListener("click", (event) => {
-    if(event.target.closest('.edit_button')){
-        openEditPage();
-
-        currentId = event.target.getAttribute('id');
-        fillInValuesToEdit(currentId);
-    }
-});
-
 editSubmitButton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    const {name, spesies, size, lifespan, 
-            dangerLevel, diet, daysNotFed,} = getInputValues();
-    clearInputValues();
-    let indexOfItemToEdit = animalsList.findIndex((item) => {
-        return item.id === currentId;
-    });
+    if (validateInputs()) {    
+        const { name, spesies, size, lifespan,
+        dangerLevel, diet, daysNotFed, } = getInputValues();
 
-    animalsList[indexOfItemToEdit].name = name;
-    animalsList[indexOfItemToEdit].spesies = spesies;
-    animalsList[indexOfItemToEdit].size = size;
-    animalsList[indexOfItemToEdit].lifespan = lifespan;
-    animalsList[indexOfItemToEdit].dangerLevel = dangerLevel;
-    animalsList[indexOfItemToEdit].diet = diet;
-    animalsList[indexOfItemToEdit].daysNotFed = daysNotFed;
+        clearInputValues();
+        let indexOfItemToEdit = animalsList.findIndex((item) => {
+            return item.id === currentId;
+        });
 
-    renderAnimalsBoard(animalsList);
-    openMainPage();
+        animalsList[indexOfItemToEdit].name = name;
+        animalsList[indexOfItemToEdit].spesies = spesies;
+        animalsList[indexOfItemToEdit].size = size;
+        animalsList[indexOfItemToEdit].lifespan = lifespan;
+        animalsList[indexOfItemToEdit].dangerLevel = dangerLevel;
+        animalsList[indexOfItemToEdit].diet = diet;
+        animalsList[indexOfItemToEdit].daysNotFed = daysNotFed;
+
+        renderAnimalsBoard(animalsList);
+        openMainPage();
+    } else {
+        getAlert();
+    }
 });
 
 
-const addAnimalToBoard = ({id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => {
+const addAnimalToBoard = ({ id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed }) => {
     animalsBoard.insertAdjacentHTML(
         "beforeend",
-        itemTemplate({id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed })
+        itemTemplate({ id, name, spesies, size, lifespan, dangerLevel, diet, daysNotFed })
     );
 };
 
@@ -221,7 +242,32 @@ const renderAnimalsBoard = (items) => {
 };
 
 
-// Manage animals
+
+// ---------- Input validation ----------
+
+const alertWindow = document.getElementById('alert');
+const closeAlert = document.getElementById('alert__button');
+
+const validateInputs = () => {
+    return nameInput.value && spesiesInput.value && sizeInput.value &&
+        lifespanInput.value && dangerLevelInput.value && dietInput.value &&
+        daysNotFedInput.value >= 0 && daysNotFedInput.value;
+};
+
+closeAlert.addEventListener("click", (event) => {
+    getAlertClosed();
+});
+
+const getAlert = () => {
+    alertWindow.classList.add('pop_up');
+};
+
+const getAlertClosed = () => {
+    alertWindow.classList.remove('pop_up');
+};
+
+
+// ---------- Manage animals ------------
 
 const searchButton = document.getElementById('search_button');
 const cancelButton = document.getElementById('cancel_button');
@@ -235,14 +281,14 @@ searchButton.addEventListener("click", (event) => {
 
     const foundList = animalsList.filter(
         (item) => item.dangerLevel.toLowerCase().includes(searchInput.value.toLowerCase())
-        );
-    
+    );
+
     renderAnimalsBoard(foundList);
 });
 
 cancelButton.addEventListener("click", (event) => {
     event.preventDefault();
-    
+
     renderAnimalsBoard(animalsList);
     searchInput.value = "";
 });
@@ -251,8 +297,8 @@ sortCheckbox.onchange = () => {
     if (sortCheckbox.checked) {
         let sortedArray = animalsList.slice();
         sortedArray.sort((a, b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             return 0;
         });
         renderAnimalsBoard(sortedArray);
@@ -269,9 +315,11 @@ countButton.addEventListener("click", (event) => {
 });
 
 
+// ---------- Default cards ----------
+
 const defaultValues = [
     {
-        name: 'Spook', 
+        name: 'Spook',
         spesies: 'Dendrobatidae',
         size: '5cm',
         lifespan: '13y',
@@ -280,16 +328,16 @@ const defaultValues = [
         daysNotFed: 2
     },
     {
-        name: 'Sam', 
+        name: 'Nem',
         spesies: 'Chacoan horned frog',
         size: '10cm',
-        lifespan: '	7y',
+        lifespan: '7y',
         dangerLevel: 'Moderate',
-        diet: '	Insects and small mammals',
-        daysNotFed: 3.2
+        diet: 'Insects and small mammals',
+        daysNotFed: 3
     },
     {
-        name: 'Fighty', 
+        name: 'Fighty',
         spesies: 'European mantis',
         size: '9cm',
         lifespan: '12y',
@@ -298,13 +346,22 @@ const defaultValues = [
         daysNotFed: 7
     },
     {
-        name: 'Sandy', 
-        spesies: '	Lepidodactylus lugubris',
+        name: 'Andie',
+        spesies: 'Lepidodactylus lugubris',
         size: '9cm',
         lifespan: '8y',
         dangerLevel: 'Low',
         diet: 'Insects',
         daysNotFed: 1
+    },
+    {
+        name: 'Slay',
+        spesies: 'Lepidodactylus lugubris',
+        size: '18cm',
+        lifespan: '13y',
+        dangerLevel: 'Extreme',
+        diet: 'Insects',
+        daysNotFed: 2
     },
 ];
 

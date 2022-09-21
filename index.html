@@ -51,6 +51,7 @@
                         <h3 class="sort__title option__title">Sort by name:</h3>
                         <input type="checkbox" id="sort__check">
                     </div>
+                    <div class="horisontal_line"></div>
                     <div class="count__container">
                         <h3 class="count__title option__title">Count total days animals weren't fed:</h3>
                         <button id="count__button">Count</button>
@@ -61,34 +62,9 @@
                     </div>
                 </div>
             </div>
+            <div class="vertical_line"></div>
             <div class="animals_container">
                 <ul id="animals_list">
-                    <!-- <li class="animal_item">
-                        <h4></h4>
-                        <div class="animal_item__item">
-                            <h5 class="animal__characteristic">Size:</h5>
-                            <p class="animal__text"></p>
-                        </div>
-                        <div class="animal_item__item">
-                            <h5 class="animal__characteristic">Lifespan:</h5>
-                            <p class="animal__text"></p>
-                        </div>
-                        <div class="animal_item__item">
-                            <h5 class="animal__characteristic">Danger level:</h5>
-                            <p class="animal__text"></p>
-                        </div>
-                        <div class="animal_item__item">
-                            <h5 class="animal__characteristic">Diet:</h5>
-                            <p class="animal__text"></p>
-                        </div>
-                        <div class="animal_item__item">
-                            <h5 class="animal__characteristic">Days not fed:</h5>
-                            <p class="animal__text"></p>
-                        </div>
-                        <div class="edit_button__wrapper">
-                            <button class="edit_button">Edit</button>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
         </main>
@@ -135,6 +111,14 @@
                     <button id="edit_submit_button" class="input_page_button hidden">Edit</button>
             </div>
         </main>
+        <div id="alert" class="alert_window hidden">
+            <div class="alert__container">
+                <p class="alert_text">
+                    Oh snap! Your inputs are invalid TwT
+                </p>
+                <div id="alert__button"><div class="close__alert"></div></div>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="./js/index.js"></script>
