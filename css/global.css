@@ -59,3 +59,54 @@ p {
 	display: flex;
 	flex-direction: column;
 }
+
+.demo_button {
+	width: 210px;
+	height: 60px;
+
+	background: #FFFFFF;
+	box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+	border-radius: 50px;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	transition: .3s;
+}
+
+.demo_button p {
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 160%;
+	color: #212353;
+}
+
+.demo_button::after {
+	content: url('../img/btn/arrow.svg');
+	margin-top: 6px;
+}
+
+.demo_button:hover {
+	background-color: rgb(244, 186, 238);
+}
+
+.learn_more_button {
+	width: 170px;
+	height: 60px;
+
+	border-radius: 50px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: .3s;
+}
+
+.learn_more_button span {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 160%;
+}
