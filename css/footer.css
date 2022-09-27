@@ -6,6 +6,12 @@
 	margin-bottom: 100px;
 }
 
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__line {
+		margin-bottom: 40px;
+	}
+}
+
 .footer__top-container {
 	max-width: 1126px;
 	margin: 0px auto;
@@ -13,11 +19,11 @@
 	justify-content: space-between;
 }
 
-.footer__bottom-container {
-	max-width: 1117px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__top-container {
+		flex-wrap: wrap;
+		margin: 0px 15px 50px;
+	}
 }
 
 .footer__content h2 {
@@ -30,6 +36,21 @@
 	line-height: 160%;
 }
 
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__content {
+		flex: 0 1 100%;
+		text-align: center;
+	}
+
+	.footer__content h2 {
+		margin: 0 0 10px;
+	}
+
+	.footer__content p {
+		font-size: .75rem;
+	}
+}
+
 .footer__btns {
 	display: flex;
 	align-items: center;
@@ -37,7 +58,7 @@
 	margin-top: 21px;
 }
 
-.footer__demo-button {
+.footer__request_demo-button {
 	margin: 0 3px 0 30px;
 }
 
@@ -50,6 +71,39 @@
 	background-color: #b331c1;
 }
 
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__btns {
+		flex: 0 1 100%;
+		justify-content: center;
+		margin: -10px 0 -10px 0;
+	}
+
+	.footer__request_demo-button {
+		margin: 18px -20px 0 -22px;
+	}
+
+	.footer__learn_more {
+		margin: 10px -22px -10px -20px;
+	}
+
+	.footer__learn_more:hover {
+		background-color: #b331c1;
+	}
+}
+
+.footer__bottom-container {
+	max-width: 1117px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__bottom-container {
+		margin: 0px 15px;
+	}
+}
+
 .footer__copyright p {
 	font-size: 12px;
 	font-style: normal;
@@ -60,6 +114,24 @@
 	color: #212353;
 }
 
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__copyright {
+		flex: 0 1 50%;
+		margin-top: 10px;
+	}
+
+	.footer__copyright p {
+		font-size: .5rem;
+		line-height: 0.75rem;
+	}
+}
+
 .footer__message {
 	margin-bottom: 41px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.footer__message {
+		margin-bottom: 20px;
+	}
 }
