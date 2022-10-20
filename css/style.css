@@ -278,18 +278,37 @@ html{
     font-weight: 500;
 }
 
-.edit_button__wrapper{
-    position: absolute;
-    right: 10%;
-    bottom: 5%;
-}
 
-.edit_button{
-    width: 70px;
+.animal_button{
+    width: 85px;
     height: 30px;
     border-radius: 5px;
     background-color: rgb(240, 240, 240);
     border: 2px solid rgb(146, 146, 146);
+    font-size: 16px;
+    font-weight: 450;
+}
+
+.edit_button__wrapper{
+    position: absolute;
+    left: 9%;
+    bottom: 5%;
+}
+.edit_button{
+    background-color: rgb(168, 208, 228);
+    border: 2px solid rgb(98, 131, 158);
+    color: rgb(0, 21, 47);
+}
+
+.delete_button__wrapper{
+    position: absolute;
+    right: 9%;
+    bottom: 5%;
+}
+.delete_button{
+    background-color: rgb(228, 168, 168);
+    border: 2px solid rgb(158, 98, 98);
+    color: rgb(47, 0, 0);
 }
 
 
