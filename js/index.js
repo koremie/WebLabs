@@ -216,7 +216,6 @@ editSubmitButton.addEventListener("click", (event) => {
 });
 
 
-
 // ---------- Delete animal -----------
 
 animalsBoard.addEventListener("click", (event) => {
@@ -328,18 +327,18 @@ const baseRequest = async ({ urlPath = "", method = "GET", body = null }) => {
 };
 
 
-export const getAllAnimals = async () => {
+const getAllAnimals = async () => {
   const rawResponse = await baseRequest({ method: "GET" });
 
   return await rawResponse.json();
 };
 
-export const postAnimal = (body) => baseRequest({ method: "POST", body });
+const postAnimal = (body) => baseRequest({ method: "POST", body });
 
-export const updateAnimal = (id, body) =>
+const updateAnimal = (id, body) =>
   baseRequest({ urlPath: `/${id}`, method: "PUT", body });
 
-export const deleteAnimal = (id) =>
+const deleteAnimal = (id) =>
   baseRequest({ urlPath: `/${id}`, method: "DELETE" });
 
 const refetchAllAnimals = async () => {
